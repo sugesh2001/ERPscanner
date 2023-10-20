@@ -6,6 +6,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { locateContext } from "./App";
+import { useFrappeGetDocList } from "frappe-react-sdk";
 
 const MyForm: React.FC = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const MyForm: React.FC = () => {
     });
   };
 
+  
   useEffect(() => {
     // Initialize the QR code scanner
     const scanner = new Html5QrcodeScanner(
@@ -80,8 +82,9 @@ const MyForm: React.FC = () => {
     console.log("Form submitted with data:", formDataEmployee);
 
     if (showLabel) {
-      navigate("/LaptopDetails");
-    } else {
+     
+      navigate("/LaptopDetails")
+     } else {
       navigate("/ExitCheckBox");
     }
   };

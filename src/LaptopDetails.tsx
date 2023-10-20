@@ -38,15 +38,7 @@ const LaptopDetails = () => {
       order: "desc",
     },
   });
-  // JSON.parse(localStorage.formdata)['name']
-  // const { data } = useFrappeGetDocList("Employee", {
-  //   fields: ["employee_number", "employment_type", "laptop_imgs"],
-  //   filters: [["first_name", "=", "bro"]],
-  //   orderBy: {
-  //     field: "creation",
-  //     order: "desc",
-  //   },
-  // });
+
 
   useEffect(() => {
     setFormDataLaptop({

@@ -16,6 +16,7 @@ import StandardListImage from "./StandardListImage";
 import { MultipleImageCapture } from "./MultipleImageCapture";
 import { createContext, useContext, useState } from "react";
 import Notifiction from "./Notification"
+import  EmployeeChart  from "./EmployeeChart.tsx";
 
 // import { StandardListImageExit } from "./StandardListImageExit";
 
@@ -40,10 +41,11 @@ function App() {
     id: "",
     laptopSerialNumber: "",
     inTime: "",
+    status:""
   });
 
   const [formDataCheckBox, setFormDataCheckBox] = useState({
-    laptop: false,
+   laptop: false,
     pendrive: false,
     hardDisk: false,
     bluetooth: false,
@@ -56,7 +58,7 @@ function App() {
   }
   const [currentDate, setCurrentDate] = useState("");
   const [capturedImages, setCapturedImages] = useState<CapturedImage[]>([]);
-
+  const [successCount, setSuccessCount] = useState<number>(0);
   
 
   return (
@@ -77,6 +79,8 @@ function App() {
           setShowLabel: setShowLabel,
           capturedImages: capturedImages,
           setCapturedImages: setCapturedImages,
+          successCount:successCount,
+          setSuccessCount:setSuccessCount,
           // extractEmployeeInfo :extractEmployeeInfo ,
         }}
       >
@@ -95,7 +99,8 @@ function App() {
           <Route path="/SecurityLogin" element={<SecurityLogin />} />
           <Route path="/StandardListImage" element={<StandardListImage />} />
           <Route path="/Notification" element={<Notifiction />} />
-           
+          <Route path="/EmployeeChart" element={<EmployeeChart />} />
+
           {/* <Route path="/StandardListImageExit" element={<StandardListImageExit />} /> */}
           <Route
             path="/MultipleImageCapture"
@@ -107,6 +112,5 @@ function App() {
   );
 }
 export default App;
-
 
 

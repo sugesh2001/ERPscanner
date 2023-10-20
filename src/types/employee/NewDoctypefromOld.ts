@@ -27,8 +27,10 @@ export interface NewDoctypefromOld{
 	laptop_brand?: string
 	/**	Id : Data	*/
 	id?: string
-	/**	checked : Data	*/
+	/**	Return : Data	*/
 	checked?: string
-	/**	unchecked : Data	*/
+	/**	Balance : Data	*/
 	unchecked?: string
+	/**	status : Data	*/
+	status?: string
 }

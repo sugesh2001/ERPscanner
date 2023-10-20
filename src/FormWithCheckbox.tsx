@@ -11,6 +11,7 @@ import { useFrappeCreateDoc } from "frappe-react-sdk";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MultipleImageCapture } from "./MultipleImageCapture";
+import { useFrappeUpdateDoc } from "frappe-react-sdk";
 const FormWithCheckbox: React.FC = () => {
   const navigate = useNavigate();
   const {
@@ -21,6 +22,8 @@ const FormWithCheckbox: React.FC = () => {
     // currentDate,
     userFormImage,
     capturedImages,
+    successCount,
+    setSuccessCount,
   }: any = useContext(locateContext);
 
  
@@ -62,10 +65,11 @@ const FormWithCheckbox: React.FC = () => {
     navigate("/ThankyouPage");
     setTimeout(() => {
       window.location.replace("/WelcomePage");
-    }, 2000);
+    }, 9000);
   };
 
   const { createDoc } = useFrappeCreateDoc();
+  const {updateDoc}=useFrappeUpdateDoc();
 
   const handleCreateDoc = async () => {
     interface CapturedImage {
@@ -83,6 +87,7 @@ const FormWithCheckbox: React.FC = () => {
       id: formDataEmployee.id,
       time: getCurrentTime(),
       image: userFormImage.image,
+      status:"Online",
       carry: Object.keys(formDataCheckBox)
         .filter((item) => item !== "otherText" && item !== "others" && formDataCheckBox[item])
         .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
@@ -118,6 +123,11 @@ const FormWithCheckbox: React.FC = () => {
       selectNone();
       };
   }, []);
+ 
+  
+
+
+//create docytype
   const handleCreateAttendance = async () => {
     const formAttendance = {
       title: "d1", // Example title
@@ -126,7 +136,6 @@ const FormWithCheckbox: React.FC = () => {
        employee_name: formDataEmployee.name,
       attendance_date: currentDate,
       in_time:getCurrentTime(),
-      out_time:getCurrentTime(),
        employee_id:formDataEmployee.id,
        location: formDataLaptop.laptopLocation,
     };
@@ -134,6 +143,9 @@ const FormWithCheckbox: React.FC = () => {
     try {
       await createDoc("Attendance", formAttendance);
       console.log("Created Successfully attendance");
+      setSuccessCount((prevCount: number) => prevCount + 1); // Increase count on successful creation
+
+      console.log("count",successCount);
     } catch (error) {
       console.error("Error creating doc:", error);
     }

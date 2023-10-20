@@ -1,4 +1,3 @@
-//import { useState } from "react";
 import Container from "@mui/material/Container";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -12,6 +11,8 @@ import { useState, useEffect } from "react";
 import { useFrappeGetDocList } from "frappe-react-sdk";
 import { ImageList, ImageListItem } from "@mui/material";
 import { useFrappeUpdateDoc } from "frappe-react-sdk";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 
 function parseTime(timeString: string): Date {
@@ -116,7 +117,7 @@ const ExitCheckBox = () => {
 
 
   const { data }: any = useFrappeGetDocList("NewDoctypefromOld", {
-    fields: ["carry", "imagelist6", "date", "location","time",],
+    fields: ["carry", "imagelist6", "date", "location","time","image"],
     filters: [
       ["id", "=", formDataEmployee.id],
       ["date", "=", currentDate],
@@ -159,6 +160,7 @@ const ExitCheckBox = () => {
     const confiscatedupdate = {
     checked: checkedlist.join(","),
     unchecked: uncheckedlist.join(","),
+    status:"Offline"
     };
     console.log("checked", checkedItems, uncheckedItems);
     try {
@@ -202,6 +204,50 @@ const ExitCheckBox = () => {
   console.log(".........",itemsArrayImage?.[0],itemsArrayImage);
   const Location = data?.[0].location;
   const inTime = data?.[0].time;
+
+  const Carousel = ({ itemsArrayImage }: { itemsArrayImage: string[] }) => {
+    const [index, setIndex] = useState(0); 
+    const move = (direction: String) => { 
+        if (direction === "next") { 
+        setIndex((index + 1) % itemsArrayImage.length);
+         } else { 
+        setIndex((index - 1 + itemsArrayImage.length) % itemsArrayImage.length);
+         } 
+        }; 
+        
+        useEffect(() => { 
+        const interval = setInterval(() => { 
+        move("next"); 
+        }, 3000); 
+        
+        return () => clearInterval(interval);
+         }, [index]);
+        
+        
+        
+        return ( 
+        <div className="container" style={{ display: "flex", margin: "40px",borderRadius: "10px",boxShadow: "0 0 40px rgba(8, 7, 16, 0.6)", }}> 
+        <Button onClick={() => move("previous")} className="overlay left"> 
+        <ArrowCircleLeftIcon /> 
+        </Button> 
+        <img 
+        style={{ height: "30vh", width: "40vw" }} 
+        src={itemsArrayImage[index]} 
+        alt={`item-${index}`} 
+        loading="lazy" /> 
+        <div className="overlay indicator"> 
+        {itemsArrayImage.map((item, i) => (
+            <div key={i}> 
+        
+         </div>
+         ))} 
+        </div> 
+        <Button onClick={() => move("next")} className="overlay right"> 
+        <ArrowCircleRightIcon /> 
+        </Button> 
+        </div> 
+        );
+         };
   
   return (
     <>
@@ -209,18 +255,10 @@ const ExitCheckBox = () => {
         maxWidth="sm"
         style={{ textAlign: "center", marginTop: "50px" }}
       >
+         <img src={data?.[0].image} alt="laptop image" width="500" height="600"></img>
         <h2>Confiscated Items:</h2>
-        {
-          itemsArrayImage?.[0]!=="" &&
-        (
-          <ImageList cols={2} rowHeight={300}>
-          {itemsArrayImage?.map((item: any, index: any) => (
-            <ImageListItem className={"imagelist"} key={index}>
-              <img src={item} alt={`item-${index}`} />
-            </ImageListItem>
-          ))}
-        </ImageList>)}
-
+        
+        <Carousel itemsArrayImage={itemsArrayImage} />
         <form onSubmit={handleSubmit}>
           <FormGroup>
             {(itemsArray?.length === 1 && itemsArray?.[0]==="" )? (
@@ -288,3 +326,5 @@ const ExitCheckBox = () => {
 };
 
 export default ExitCheckBox;
+
+
