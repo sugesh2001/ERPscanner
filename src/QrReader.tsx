@@ -2,6 +2,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { locateContext } from "./App";
+import MyForm from "./DataFrom";
 
 function Test() {
   const [scanResult, setScanResult] = useState(null);
@@ -32,21 +33,21 @@ function Test() {
     scanner.render(success, error);
 
     return () => {
-      // Clean up the scanner when component is unmounted
+      // Clean up the scanner when the component is unmounted
       scanner.clear();
     };
   }, []);
 
-  useEffect(() => {
-    if (scanResult) {
-      window.location.replace(scanResult);
-    }
-  }, [scanResult]);
-
   return (
-    <div className="scanner-container">
-      <div id="reader" className="custom-reader"></div>
-    </div>
+    <>
+      {scanResult ? (
+        <MyForm props={{scanResult}} />
+      ) : (
+        <div className="scanner-container">
+          <div id="reader" className="custom-reader"></div>
+        </div>
+      )}
+    </>
   );
 }
 

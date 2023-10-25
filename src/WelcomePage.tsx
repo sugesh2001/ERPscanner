@@ -1,29 +1,34 @@
 
 import { useNavigate } from "react-router-dom";
-import RocketIcon from "@mui/icons-material/Rocket";
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import { useContext } from "react";
 import { locateContext } from "./App";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+
+
 export function WelcomePage() {
   const {
     setShowLabel,
-  }: // setUserFormImage,
+  }: 
   any = useContext(locateContext);
 
   const navigate = useNavigate();
   const handleEntryClick = () => {
     setShowLabel(true);
     localStorage.setItem("isEntry", "true");
+    navigate("/post");
   };
   const handleLogout = () => {
     localStorage.removeItem("isEntry"); // Remove the 'isEntry' flag to indicate logout
-    navigate("/LoginPage"); // Navigate to the SecurityLogin page
+    navigate("/SecurityLogin"); // Navigate to the SecurityLogin page
   };
 
   const handleExitClick = () => {
-    localStorage.setItem("isEntry", "false");
-
     setShowLabel(false);
+    localStorage.setItem("isEntry", "false");
+    navigate("/post");
+
+    
   };
  
   return (
@@ -126,7 +131,7 @@ export function WelcomePage() {
         </div>
       </div>
       <div>
-        <button
+        {/* <button
           onClick={handleLogout}
           style={{
             margin: "80px 0", // Add margin to separate it from the content
@@ -135,10 +140,22 @@ export function WelcomePage() {
             cursor: "pointer",
             marginBottom: "125px",
             boxShadow: "0 0 5px rgba(8, 7, 16, 0.6)",
+            backgroundColor:"#237fb7",
+            color:"white"
           }}
         >
           Security Logout
-        </button>
+          
+        </button> */}
+         <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        style={{ marginTop: "16px" }}
+        onClick={handleLogout}
+      >
+        Logout
+      </Button>
       </div>
     </div>
   );

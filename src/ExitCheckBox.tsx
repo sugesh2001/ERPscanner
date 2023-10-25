@@ -56,7 +56,7 @@ const ExitCheckBox = () => {
     navigate("/ThankYouExit");
     setTimeout(() => {
       window.location.replace("/WelcomePage");
-    }, 9000);
+    }, 2000);
   };
 
 
@@ -117,7 +117,7 @@ const ExitCheckBox = () => {
 
 
   const { data }: any = useFrappeGetDocList("NewDoctypefromOld", {
-    fields: ["carry", "imagelist6", "date", "location","time","image"],
+    fields: ["carry", "imagelist6", "date", "location","time","image","status"],
     filters: [
       ["id", "=", formDataEmployee.id],
       ["date", "=", currentDate],

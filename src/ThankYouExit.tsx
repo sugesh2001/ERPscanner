@@ -1,25 +1,3 @@
-// export function ThankYouExit() {
-//   return (
-//     <div
-//       style={{
-//         backgroundColor: "white",
-//         width: "550px",
-//         height: "250px",
-//         borderRadius: "10px",
-//         padding: "15px",
-//         boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "center",
-//         fontWeight: "700",
-//         fontSize: "20px",
-//         flexDirection: "column",
-//       }}
-//     >
-//       <div> Thank you for a Productive Day </div>
-//     </div>
-//   );
-// }
 
 export function ThankYouExit() {
     return (

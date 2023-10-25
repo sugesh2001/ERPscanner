@@ -3,6 +3,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { useFrappeGetDocList } from "frappe-react-sdk";
 import { useContext } from "react";
 import { locateContext } from "./App";
+import { Container } from "@mui/system";
 export default function StandardListImage() {
   const {formDataEmployee,setFormDataEmployee}:any = useContext(locateContext)
   const { data }: any = useFrappeGetDocList("Employee", {
@@ -38,7 +39,8 @@ export default function StandardListImage() {
   ];
 
   return (
-    <ImageList sx={{ width: 500, height: 450 }} cols={2} rowHeight={164}>
+    
+    <ImageList sx={{ width: 500, height: 450 , backgroundColor: "white",}} cols={2} rowHeight={164}>
       {itemData.map((item: any) => (
         <ImageListItem className={"imagelist"} key={item.id}>
           <img

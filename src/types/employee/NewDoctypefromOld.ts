@@ -1,3 +1,5 @@
+import { imagelinks } from './imagelinks'
+
 export interface NewDoctypefromOld{
 	creation: string
 	name: string
@@ -33,4 +35,6 @@ export interface NewDoctypefromOld{
 	unchecked?: string
 	/**	status : Data	*/
 	status?: string
+	/**	imagelinks : Table - imagelinks	*/
+	imagelinks?: imagelinks[]
 }

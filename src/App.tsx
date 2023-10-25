@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MyForm from "./DataFrom";
-import Test from "./QrReader";
+ import Test from "./QrReader";
 import LaptopDetails from "./LaptopDetails";
 import { WebcamCapture } from "./WebCamCapture";
 import FormWithCheckbox from "./FormWithCheckbox";
@@ -17,6 +17,7 @@ import { MultipleImageCapture } from "./MultipleImageCapture";
 import { createContext, useContext, useState } from "react";
 import Notifiction from "./Notification"
 import  EmployeeChart  from "./EmployeeChart.tsx";
+
 
 // import { StandardListImageExit } from "./StandardListImageExit";
 
@@ -81,14 +82,14 @@ function App() {
           setCapturedImages: setCapturedImages,
           successCount:successCount,
           setSuccessCount:setSuccessCount,
-          // extractEmployeeInfo :extractEmployeeInfo ,
+          //  extractEmployeeInfo :extractEmployeeInfo ,
         }}
       >
         <Routes>
           {/* <Route path="/get" element={<GetData />} /> */}
           <Route path="/" element={<WelcomePage />} />
           <Route path="/post" element={<MyForm />} />
-          <Route path="/QrReader" element={<Test />} />
+          {/* <Route path="/QrReader" element={<Test />} /> */}
           <Route path="/LaptopDetails" element={<LaptopDetails />} />
           <Route path="/WebCamCapture" element={<WebcamCapture />} />
           <Route path="/FormWithCheckbox" element={<FormWithCheckbox />} />

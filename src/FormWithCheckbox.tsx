@@ -65,7 +65,7 @@ const FormWithCheckbox: React.FC = () => {
     navigate("/ThankyouPage");
     setTimeout(() => {
       window.location.replace("/WelcomePage");
-    }, 9000);
+    }, 2000);
   };
 
   const { createDoc } = useFrappeCreateDoc();
