@@ -5,13 +5,11 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { useFrappeAuth } from "frappe-react-sdk";
 import { useNavigate } from "react-router-dom";
-import Snackbar from '@mui/material/Snackbar';
+import Snackbar from "@mui/material/Snackbar";
 import SnackbarContent from "@mui/material/SnackbarContent";
 import { CircularProgress, IconButton, InputAdornment } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
-
 
 export const SecurityLogin = () => {
   const { currentUser, login, logout } = useFrappeAuth();
@@ -33,18 +31,17 @@ export const SecurityLogin = () => {
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
-
-     // Clear previous error messages and close snackbar
-          setSnackbarMessage("");
-          setSnackbarOpen(false);
+    // Clear previous error messages and close snackbar
+    setSnackbarMessage("");
+    setSnackbarOpen(false);
     //Validate the form fields
-    if(!username.trim()){
+    if (!username.trim()) {
       setSnackbarMessage("please enter a username.");
       setSnackbarOpen(true);
       return;
     }
 
-    if(!password.trim()){
+    if (!password.trim()) {
       setSnackbarMessage("Please enter a password.");
       setSnackbarOpen(true);
       return;
@@ -57,11 +54,15 @@ export const SecurityLogin = () => {
         navigate("/WelcomePage");
       } else {
         setSnackbarMessage("Invalid credentials. Please try again.");
-      setSnackbarOpen(true);
+        setSnackbarOpen(true);
       }
-    } catch (error :any) {
+    } catch (error: any) {
       //Handle specific error cases if needed
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         // Handle specific error message from API response
         setSnackbarMessage(error.response.data.message);
       } else if (error.message) {
@@ -69,17 +70,17 @@ export const SecurityLogin = () => {
         setSnackbarMessage(error.message);
       } else {
         // Fallback message for unknown errors
-        setSnackbarMessage("An error occurred while logging in. Please try again later.");
+        setSnackbarMessage(
+          "An error occurred while logging in. Please try again later."
+        );
       }
       setSnackbarOpen(true);
     } finally {
-       // Hide loading indicator after login attempt
+      // Hide loading indicator after login attempt
 
       setLoading(false);
     }
   };
-  
-
 
   const handlePasswordVisibilityToggle = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -93,9 +94,7 @@ export const SecurityLogin = () => {
   };
   return (
     <Container maxWidth="xs">
-      
       <div>
-        
         <label
           className="label"
           style={{
@@ -112,8 +111,7 @@ export const SecurityLogin = () => {
             boxShadow: "0 0 40px rgba(8, 7, 16, 0.6)",
             display: "flex",
             flexDirection: "column",
-            backgroundColor:"#ffffff",
-            
+            backgroundColor: "#ffffff",
           }}
         ></label>
         <img
@@ -123,7 +121,6 @@ export const SecurityLogin = () => {
           style={{ width: "100px", marginTop: "10px" }}
         />
         <h2 style={h2Styles}>Security Login</h2>
-        
 
         <TextField
           label="Username"
@@ -141,12 +138,14 @@ export const SecurityLogin = () => {
           margin="normal"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-         InputProps={{
-            endAdornment:(
+          InputProps={{
+            endAdornment: (
               <InputAdornment position="end">
-                <IconButton edge="end" onClick={()=>setShowPassword(!showPassword)}>
-                
-                  {showPassword ? <VisibilityOff /> :<Visibility />}
+                <IconButton
+                  edge="end"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             ),
@@ -160,23 +159,43 @@ export const SecurityLogin = () => {
         >
           Log In
         </Button>
-       
-        <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-          {loading && <CircularProgress style={{marginTop:'20px'}} />}
-        <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={10000} // Snackbar will close automatically after 6 seconds
-        onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <SnackbarContent
-          message={snackbarMessage}
-          style={{ backgroundColor: "blue", color: "white" }} // Set the text color to white
-          />
-      </Snackbar>
-      </div>
-      
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {loading && <CircularProgress style={{ marginTop: "20px" }} />}
+          <Snackbar
+            open={snackbarOpen}
+            autoHideDuration={10000} // Snackbar will close automatically after 6 seconds
+            onClose={handleSnackbarClose}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <SnackbarContent
+              message={snackbarMessage}
+              style={{ backgroundColor: "blue", color: "white" }} // Set the text color to white
+            />
+          </Snackbar>
         </div>
+        <button
+          onClick={() => {
+            navigate("/Employeechart");
+          }}
+          style={{
+            position: "absolute",
+            bottom: "80px",
+            right: "46.5%",
+
+            padding: "10px",
+            cursor: "pointer",
+          }}
+        >
+          Employeechart
+        </button>
+      </div>
     </Container>
   );
 };

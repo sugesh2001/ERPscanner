@@ -1,0 +1,13 @@
+.container {
+  background-image: url("path/to/your/background-image.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative; /* Add this to allow z-index to work */
+  /* Add more styles as needed */
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* Ensure the content is above the background */
+}

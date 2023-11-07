@@ -43,16 +43,15 @@
 
 .custom-reader {
   /* Add your styles here */
-  border: 1vh solid black ;
+  border: 1vh solid black;
   /* Add more styles as needed */
   width: 100vh;
-  height:70vh;
+  height: 70vh;
   text-align: center;
   position: relative;
   padding-top: 20vh;
- 
-  }
- .scanner-container {
+}
+.scanner-container {
   width: 150vh;
   height: 70vh;
   margin-left: auto;
@@ -64,24 +63,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-  .imagelist{
-    gap: 4px;
-    
-    
-    padding: 1rem;
-   
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  }.reader{
-    background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(32,121,9,1) 42%, rgba(0,212,255,1) 100%);
-  }
-
-
-  .element {
-    background-image: url('.jpg');
-    background-size: cover; /* or 'contain' */
-    background-repeat: no-repeat;
-    background-position: center center;
 }
- 
+.imagelist {
+  gap: 4px;
+
+  padding: 1rem;
+
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.reader {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(32, 121, 9, 1) 42%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.element {
+  background-image: url(".jpg");
+  background-size: cover; /* or 'contain' */
+  background-repeat: no-repeat;
+  background-position: center center;
+}

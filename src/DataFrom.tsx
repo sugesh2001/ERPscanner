@@ -8,13 +8,12 @@ import { useContext } from "react";
 import { locateContext } from "./App";
 import { useFrappeGetDocList } from "frappe-react-sdk";
 import Container from "@mui/material/Container";
-import { MyDocumentList } from "./Mydoclist";
+import { MyDocumentList } from "./Supportingfiles/Mydoclist";
 
-
-  const MyForm: React.FC = () => {
+const MyForm: React.FC = () => {
   const navigate = useNavigate();
   const [scanResult, setScanResult] = useState<string | null>(null);
-  const { formDataEmployee, setFormDataEmployee}: any =
+  const { formDataEmployee, setFormDataEmployee }: any =
     useContext(locateContext);
   const showLabel = localStorage.getItem("isEntry") === "true";
   const [Employee_Id, setEmployeeId] = useState<string>("");
@@ -29,7 +28,6 @@ import { MyDocumentList } from "./Mydoclist";
     });
   };
 
-  
   useEffect(() => {
     // Initialize the QR code scanner
     const scanner = new Html5QrcodeScanner(
@@ -67,37 +65,36 @@ import { MyDocumentList } from "./Mydoclist";
     const parts = scanResult.split("/");
     const id = parts[1] || "";
     const name = parts[0] || "";
-   
-  
+
     //localstorage add pandrom
-       localStorage.formdata = JSON.stringify({ name: name, id: id });
-    
+    localStorage.formdata = JSON.stringify({ name: name, id: id });
+
     return { id, name };
   };
   useEffect(() => {
-    const { id: extractedId, name: extractedName } = extractEmployeeInfo(scanResult);
+    const { id: extractedId, name: extractedName } =
+      extractEmployeeInfo(scanResult);
     setEmployeeId(extractedId);
     setEmployeeName(extractedName);
-    
-    setFormDataEmployee({ ...formDataEmployee, id: extractedId, name: extractedName });
-}, [scanResult]);
-    let datastatus: any =  MyDocumentList(localStorage,"NewDoctypefromOld");
-    let employeestatus: any =  MyDocumentList(localStorage ,"Employee");
-    // console.log("employeestatus", employeestatus);
-    let statusData = datastatus?.[0]?.status;
-    let employeeData = employeestatus?.[0]?.status;
-    //  console.log("employeeData", employeeData);
-    // console.log("statusData", statusData);
+
+    setFormDataEmployee({
+      ...formDataEmployee,
+      id: extractedId,
+      name: extractedName,
+    });
+  }, [scanResult]);
+
+  let datastatus: any = MyDocumentList(localStorage, "NewDoctypefromOld");
+  let employeestatus: any = MyDocumentList(localStorage, "Employee");
+  // console.log("employeestatus", employeestatus);
+
+  let statusData = datastatus?.[0]?.status;
+  let employeeData = employeestatus?.[0]?.status;
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    
     e.preventDefault();
     const inTime = getCurrentTime();
-
-    
-
-
     console.log("Form submitted with data:", formDataEmployee);
 
     if (showLabel) {
@@ -106,7 +103,6 @@ import { MyDocumentList } from "./Mydoclist";
           alert("You didnt Exit");
           navigate("/welcomepage"); // Navigate to welcomepage
         } else {
-        
           navigate("/LaptopDetails");
         }
       } else {
@@ -114,7 +110,8 @@ import { MyDocumentList } from "./Mydoclist";
         navigate("/welcomepage");
       }
     }
-      if(!showLabel){
+
+    if (!showLabel) {
       if (employeeData === "Active") {
         if (statusData === "Offline") {
           alert("You didnt Entered");
@@ -150,24 +147,25 @@ import { MyDocumentList } from "./Mydoclist";
     const formattedDate = `${year}-${month}-${day}`;
     setCurrentDate(formattedDate);
   }, []);
-  
+
   return scanResult ? (
-     <Container maxWidth="xs"
-     style={{
-      padding: "20px",
-      minHeight: "60vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}>
-      
+    <Container
+      maxWidth="xs"
+      style={{
+        padding: "20px",
+        minHeight: "60vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div>
-      <label
+        <label
           className="label"
           style={{
             margin: "20px 0", // Add margin to create a gap at the top
             padding: "20px",
-            width:"90%",
+            width: "90%",
             height: "70%",
             maxWidth: "400px",
             position: "absolute",
@@ -179,53 +177,66 @@ import { MyDocumentList } from "./Mydoclist";
             boxShadow: "0 0 40px rgba(8, 7, 16, 0.6)",
             display: "flex",
             flexDirection: "column",
-            backgroundColor:"#ffffff",
-            
+            backgroundColor: "#ffffff",
           }}
         ></label>
-    <form onSubmit={handleSubmit} style={{ maxWidth: "400px", margin: "auto" }}>
-   
-      <Typography style={{ marginBottom: "1.5rem",fontSize:"1.2rem" }}>Employee Details</Typography>
-      <div style={{ marginBottom: "10px" }}>
-        <TextField
-          label="Name"
-          variant="outlined"
-          name="name"
-          value={Employee_Name}
-          onChange={handleInputChange}
-          fullWidth 
-        />
+        <form
+          onSubmit={handleSubmit}
+          style={{ maxWidth: "400px", margin: "auto" }}
+        >
+          <Typography style={{ marginBottom: "1.5rem", fontSize: "1.2rem" }}>
+            Employee Details
+          </Typography>
+          <div style={{ marginBottom: "10px" }}>
+            <TextField
+              label="Name"
+              variant="outlined"
+              name="name"
+              value={Employee_Name}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </div>
+          <div style={{ marginBottom: "10px" }}>
+            <TextField
+              label="ID"
+              variant="outlined"
+              name="id"
+              value={Employee_Id}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </div>
+          <div style={{ marginBottom: "10px" }}>
+            <TextField
+              label="Date"
+              variant="outlined"
+              name="date"
+              value={currentDate}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </div>
+          <div style={{ marginBottom: "10px" }}>
+            <TextField
+              label={showLabel ? "In-Time" : "Out-Time"}
+              variant="outlined"
+              name={showLabel ? "inTime" : "outTime"}
+              value={getCurrentTime()}
+              onChange={handleInputChange}
+              fullWidth
+            />
+          </div>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            style={{ marginTop: "16px" }}
+          >
+            Next
+          </Button>
+        </form>
       </div>
-      <div style={{ marginBottom: "10px" }}>
-        <TextField
-          label="ID"
-          variant="outlined"
-          name="id"
-          value={Employee_Id}
-          onChange={handleInputChange}
-          fullWidth
-        />
-      </div>
-      <div style={{ marginBottom: "10px" }}>
-        <TextField
-          label={showLabel ? "In-Time" : "Out-Time"}
-          variant="outlined"
-          name={showLabel ? "inTime" : "outTime"}
-          value={getCurrentTime()}
-          onChange={handleInputChange}
-          fullWidth
-        />
-      </div>
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        style={{ marginTop: "16px" }}
-      >
-        Next
-      </Button>
-    </form>
-    </div>
     </Container>
   ) : (
     <div className="scanner-container">

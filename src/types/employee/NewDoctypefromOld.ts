@@ -15,7 +15,7 @@ export interface NewDoctypefromOld{
 	location?: string
 	/**	Time : Data	*/
 	time?: string
-	/**	Image : Attach Image	*/
+	/**	Image : Long Text	*/
 	image?: string
 	/**	carry : Data	*/
 	carry?: string
@@ -27,7 +27,7 @@ export interface NewDoctypefromOld{
 	laptop_serial?: string
 	/**	Laptop Brand : Data	*/
 	laptop_brand?: string
-	/**	Id : Data	*/
+	/**	Id : Link - Employee	*/
 	id?: string
 	/**	Return : Data	*/
 	checked?: string
@@ -37,4 +37,12 @@ export interface NewDoctypefromOld{
 	status?: string
 	/**	imagelinks : Table - imagelinks	*/
 	imagelinks?: imagelinks[]
+	/**	Employee Doctype : Link - Employee	*/
+	employee_doctype?: string
+	/**	Attendance Doctype : Link - Attendance	*/
+	attendance_doctype?: string
+	/**	Laptop Image : Attach Image	*/
+	laptop_image?: string
+	/**	Laptop Image 1 : Image	*/
+	laptop_image_1?: string
 }

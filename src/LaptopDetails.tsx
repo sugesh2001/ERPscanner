@@ -13,7 +13,8 @@ import { useState } from "react";
 import StandardListImage from "./StandardListImage";
 
 const LaptopDetails = () => {
-  const { formDataLaptop, setFormDataLaptop,formDataEmployee }: any = useContext(locateContext);
+  const { formDataLaptop, setFormDataLaptop, formDataEmployee }: any =
+    useContext(locateContext);
   const navigate = useNavigate();
 
   const handleChange = (e: any) => {
@@ -38,7 +39,6 @@ const LaptopDetails = () => {
       order: "desc",
     },
   });
-
 
   useEffect(() => {
     setFormDataLaptop({
@@ -78,7 +78,7 @@ const LaptopDetails = () => {
           name="laptopBrand"
           value={formDataLaptop.laptopBrand}
           onChange={handleChange}
-           fullWidth
+          fullWidth
         />
       </div>
 
@@ -89,29 +89,29 @@ const LaptopDetails = () => {
           name="laptopSerialNumber"
           value={formDataLaptop.laptopSerialNumber}
           onChange={handleChange}
-           fullWidth
+          fullWidth
         />
       </div>
 
       <FormControl fullWidth variant="outlined" style={{ marginTop: "1rem" }}>
-  <InputLabel htmlFor="laptopLocation">Location</InputLabel>
-  <Select
-    label="Location"
-    name="laptopLocation"
-    value={formDataLaptop.laptopLocation}
-    onChange={handleChange}
-    fullWidth
-    required // Add the required attribute to the Select component
-  >
-    <MenuItem value="">
-      <em>Select Location</em>
-    </MenuItem>
-    <MenuItem value={"Open Workspace - 1"}>Open Workspace - 1</MenuItem>
-    <MenuItem value={"Open Workspace - 2"}>Open Workspace - 2</MenuItem>
-    <MenuItem value={"Thaiyur"}>Thaiyur</MenuItem>
-  </Select>
-</FormControl>
-      
+        <InputLabel htmlFor="laptopLocation">Location</InputLabel>
+        <Select
+          label="Location"
+          name="laptopLocation"
+          value={formDataLaptop.laptopLocation}
+          onChange={handleChange}
+          fullWidth
+          required // Add the required attribute to the Select component
+        >
+          <MenuItem value="">
+            <em>Select Location</em>
+          </MenuItem>
+          <MenuItem value={"Open Workspace - 1"}>Open Workspace - 1</MenuItem>
+          <MenuItem value={"Open Workspace - 2"}>Open Workspace - 2</MenuItem>
+          <MenuItem value={"Thaiyur"}>Thaiyur</MenuItem>
+        </Select>
+      </FormControl>
+
       <div style={{ marginTop: "1rem" }}>
         <Button
           type="submit"

@@ -21,8 +21,7 @@ export function StandardListImageExit() {
   const { data }: any = useFrappeGetDocList("confiscated", {
     fields: ["carry", "imagelist6", "date", "id"],
     filters: [
-      ["id", "=",formDataEmployee.id
-    ],
+      ["id", "=", formDataEmployee.id],
       ["date", "=", currentDate],
     ],
     orderBy: {

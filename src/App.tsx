@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import MyForm from "./DataFrom";
- import Test from "./QrReader";
+import MyForm from "./DataFrom.tsx";
+//  import Test from "./postReader";
 import LaptopDetails from "./LaptopDetails";
 import { WebcamCapture } from "./WebCamCapture";
 import FormWithCheckbox from "./FormWithCheckbox";
@@ -15,9 +15,8 @@ import { SecurityLogin } from "./SecurityLogin";
 import StandardListImage from "./StandardListImage";
 import { MultipleImageCapture } from "./MultipleImageCapture";
 import { createContext, useContext, useState } from "react";
-import Notifiction from "./Notification"
-import  EmployeeChart  from "./EmployeeChart.tsx";
-
+import Notifiction from "./Notification";
+import EmployeeChart from "./EmployeeChart.tsx";
 
 // import { StandardListImageExit } from "./StandardListImageExit";
 
@@ -42,14 +41,14 @@ function App() {
     id: "",
     laptopSerialNumber: "",
     inTime: "",
-    status:""
+    status: "",
   });
 
   const [formDataCheckBox, setFormDataCheckBox] = useState({
-   laptop: false,
+    scissors: false,
     pendrive: false,
     hardDisk: false,
-    bluetooth: false,
+    cutter: false,
     others: false,
     otherText: "",
   });
@@ -60,7 +59,6 @@ function App() {
   const [currentDate, setCurrentDate] = useState("");
   const [capturedImages, setCapturedImages] = useState<CapturedImage[]>([]);
   const [successCount, setSuccessCount] = useState<number>(0);
-  
 
   return (
     <BrowserRouter basename={import.meta.env.VITE_BASE_PATH}>
@@ -80,16 +78,14 @@ function App() {
           setShowLabel: setShowLabel,
           capturedImages: capturedImages,
           setCapturedImages: setCapturedImages,
-          successCount:successCount,
-          setSuccessCount:setSuccessCount,
+          successCount: successCount,
+          setSuccessCount: setSuccessCount,
           //  extractEmployeeInfo :extractEmployeeInfo ,
         }}
       >
         <Routes>
-          {/* <Route path="/get" element={<GetData />} /> */}
-          <Route path="/" element={<WelcomePage />} />
+          <Route path="/" element={<SecurityLogin />} />
           <Route path="/post" element={<MyForm />} />
-          {/* <Route path="/QrReader" element={<Test />} /> */}
           <Route path="/LaptopDetails" element={<LaptopDetails />} />
           <Route path="/WebCamCapture" element={<WebcamCapture />} />
           <Route path="/FormWithCheckbox" element={<FormWithCheckbox />} />
@@ -100,8 +96,7 @@ function App() {
           <Route path="/SecurityLogin" element={<SecurityLogin />} />
           <Route path="/StandardListImage" element={<StandardListImage />} />
           <Route path="/Notification" element={<Notifiction />} />
-          <Route path="/EmployeeChart" element={<EmployeeChart />} />
-
+          <Route path="/EmployeeChart" element={<EmployeeChart />} />*{" "}
           {/* <Route path="/StandardListImageExit" element={<StandardListImageExit />} /> */}
           <Route
             path="/MultipleImageCapture"
@@ -113,5 +108,3 @@ function App() {
   );
 }
 export default App;
-
-

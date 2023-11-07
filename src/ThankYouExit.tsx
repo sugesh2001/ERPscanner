@@ -32,4 +32,4 @@ export function ThankYouExit() {
         ></div>
       </div>
     );
-  }
+  }       

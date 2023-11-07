@@ -1,130 +1,130 @@
 .chart-container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 100%; /* Make the container take 100% width of its parent */
-    max-width: 800px; /* Set a maximum width for the container */
-    height: 800px;
-    border: 1px solid #ccc;
-    padding: 0 20px; /* Adjust padding for smaller screens */
-    box-sizing: border-box;
-    border-radius: 18px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%; /* Make the container take 100% width of its parent */
+  max-width: 800px; /* Set a maximum width for the container */
+  height: 800px;
+  border: 1px solid #ccc;
+  padding: 0 90px; /* Adjust padding for smaller screens */
+  box-sizing: border-box;
+  border-radius: 18px;
+  background-color: rgb(236, 245, 245);
+  padding-left: 0;
 }
 
 @media (max-width: 768px) {
-    .chart-container {
-        flex-direction: column; /* Stack bars vertically on smaller screens */
-        height: auto; /* Allow the container to adjust its height based on content */
-        align-items: center; /* Center items in the container */
-    }
+  .chart-container {
+    flex-direction: column; /* Stack bars vertically on smaller screens */
+    height: auto; /* Allow the container to adjust its height based on content */
+    align-items: center; /* Center items in the container */
+    padding-left: 0px;
+  }
 
-    .chart-bar {
-        width: 100%; /* Make the bars take 100% width of the container */
-        margin-bottom: 20px; /* Add space between bars */
-    }
+  .chart-bar {
+    width: 100%; /* Make the bars take 100% width of the container */
+    margin-bottom: 20px; /* Add space between bars */
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
-    .chart-container {
-        padding: 0 50px; /* Adjust padding for medium-sized screens */
-    }
+  .chart-container {
+    padding: 0 50px; /* Adjust padding for medium-sized screens */
+  }
 }
 
 @media (min-width: 1201px) {
-    .chart-container {
-        padding: 0 100px; /* Adjust padding for larger screens */
-    }
+  .chart-container {
+    padding: 0 0; /* Adjust padding for larger screens */
+  }
 }
 
-    .bar-label {
-        color: white;
-        background-color: inherit; /* Use the parent element's background color */
-        padding: 5px; /* Add padding for better visibility */
-    }
-    .chart-bar {
-        flex: 1;
-        background-color: inherit;
-        border-radius: 18px;
-        margin: 0 5px;
-        transition: height 0.5s;
-    }
-    
-    @media (max-width: 768px) {
-        .chart-bar {
-            margin: 0 0 10px 0; /* Adjust margin for smaller screens */
-        }
-    }
-    
-    @media (min-width: 769px) and (max-width: 1200px) {
-        .chart-bar {
-            margin: 0 2px; /* Adjust margin for medium-sized screens */
-        }
-    }
-    
-    @media (min-width: 1201px) {
-        .chart-bar {
-            margin: 0 5px; /* Adjust margin for larger screens */
-        }
-    }
-    
-    
-    .chart-label {
-        text-align: center;
-        margin-top: 5px;
-        font-size: 12px;
-    }
-    
-    @media (max-width: 768px) {
-        .chart-label {
-            font-size: 10px; /* Adjust font size for smaller screens */
-        }
-    }
-    
-    @media (min-width: 769px) and (max-width: 1200px) {
-        .chart-label {
-            margin-top: 3px; /* Adjust margin for medium-sized screens */
-        }
-    }
-    
-    @media (min-width: 1201px) {
-        .chart-label {
-            margin-top: 6px; /* Adjust margin for larger screens */
-        }
-    }
-    
-    
-    .button-container {
-    margin-top: 20px;
-    }
-    
-    .button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    }
-    .inner-bar {
-        width: 100%; /* Inner bar takes 100% width of its parent .chart-bar */
-        border-radius: 18px;
-        transition: height 0.5s;
-        background-color: inherit;
-    }
-    
-    @media (max-width: 768px) {
-        .inner-bar {
-            height: 30px; /* Adjust the height for smaller screens */
-        }
-    }
-    
-    @media (min-width: 769px) and (max-width: 1200px) {
-        .inner-bar {
-            height: 40px; /* Adjust the height for medium-sized screens */
-        }
-    }
-    
-    @media (min-width: 1201px) {
-        .inner-bar {
-            height: 50px; /* Adjust the height for larger screens */
-        }
-    }
-    
+.bar-label {
+  color: black;
+  background-color: inherit; /* Use the parent element's background color */
+  padding: 5px; /* Add padding for better visibility */
+}
+.chart-bar {
+  flex: 1;
+  background-color: inherit;
+  border-radius: 18px;
+  margin: 0 5px;
+  transition: height 0.5s;
+}
+
+@media (max-width: 768px) {
+  .chart-bar {
+    margin: 0 0 10px 0; /* Adjust margin for smaller screens */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .chart-bar {
+    margin: 0 2px; /* Adjust margin for medium-sized screens */
+  }
+}
+
+@media (min-width: 1201px) {
+  .chart-bar {
+    margin: 0 5px; /* Adjust margin for larger screens */
+  }
+}
+
+.chart-label {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .chart-label {
+    font-size: 10px; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .chart-label {
+    margin-top: 3px; /* Adjust margin for medium-sized screens */
+  }
+}
+
+@media (min-width: 1201px) {
+  .chart-label {
+    margin-top: 6px; /* Adjust margin for larger screens */
+  }
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.inner-bar {
+  width: 100%; /* Inner bar takes 100% width of its parent .chart-bar */
+  border-radius: 18px;
+  transition: height 0.5s;
+  background-color: inherit;
+}
+
+@media (max-width: 768px) {
+  .inner-bar {
+    height: 30px; /* Adjust the height for smaller screens */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .inner-bar {
+    height: 40px; /* Adjust the height for medium-sized screens */
+  }
+}
+
+@media (min-width: 1201px) {
+  .inner-bar {
+    height: 50px; /* Adjust the height for larger screens */
+  }
+}
